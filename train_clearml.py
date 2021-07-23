@@ -36,8 +36,8 @@ def train(opt):
 
     # Added for clearml
     print('Local path for clearml: {}'.format(local_data))
-    opt.train_data = local_data + opt.train_data
-    opt.valid_data = local_data + opt.valid_data
+    opt.train_data = opt.train_data
+    opt.valid_data = opt.valid_data
 
     train_dataset = Batch_Balanced_Dataset(opt)
 
@@ -292,8 +292,6 @@ if __name__ == '__main__':
     parser.add_argument('--awsid', required=True)
     parser.add_argument('--awskey', required=True)
     opt = parser.parse_args()
-
-
 
     if not opt.exp_name:
         opt.exp_name = f'{opt.Transformation}-{opt.FeatureExtraction}-{opt.SequenceModeling}-{opt.Prediction}'
