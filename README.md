@@ -11,6 +11,7 @@ Based on this framework, we recorded the 1st place of [ICDAR2013 focused scene t
 The difference between our paper and ICDAR challenge is summarized [here](https://github.com/clovaai/deep-text-recognition-benchmark/issues/13).
 
 ## Updates
+**Jul 23,2021**: modified train.py to attempt to use with ClearML
 **Aug 3, 2020**: added [guideline to use Baidu warpctc](https://github.com/clovaai/deep-text-recognition-benchmark/pull/209) which reproduces CTC results of our paper. <br>
 **Dec 27, 2019**: added [FLOPS](https://github.com/clovaai/deep-text-recognition-benchmark/issues/125) in our paper, and minor updates such as log_dataset.txt and [ICDAR2019-NormalizedED](https://github.com/clovaai/deep-text-recognition-benchmark/blob/86451088248e0490ff8b5f74d33f7d014f6c249a/test.py#L139-L165). <br>
 **Oct 22, 2019**: added [confidence score](https://github.com/clovaai/deep-text-recognition-benchmark/issues/82), and arranged the output form of training logs. <br>
@@ -92,6 +93,18 @@ CUDA_VISIBLE_DEVICES=0 python3 test.py \
 --Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn \
 --saved_model saved_models/TPS-ResNet-BiLSTM-Attn-Seed1111/best_accuracy.pth
 ```
+
+4. Command for ClearML
+```
+CUDA_VISIBLE_DEVICES=0 python3 train.py \
+--train_data data_lmdb_release/training --valid_data data_lmdb_release/validation \
+--select_data MJ-ST --batch_ratio 0.5-0.5 \
+--Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn \
+--outputuri (uri for model output) --datasetid (dataset id obtained after using clearml-data)  \
+--dockerimg (Docker image on harbor.dsta.ai) \
+--gituser (Gitlab username) --gitpass (Gitlab password) --awsid (AWS ID) --awskey (Secret AWS key)
+```
+
 
 ### Arguments
 * `--train_data`: folder path to training lmdb dataset.
