@@ -111,7 +111,8 @@ CUDA_VISIBLE_DEVICES=0 python3 train.py \
 --Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn \
 --outputuri (uri for model output) --datasetid (dataset id obtained after using clearml-data)  \
 --dockerimg (Docker image on harbor.dsta.ai) \
---gituser (Gitlab username) --gitpass (Gitlab password) --awsid (AWS ID) --awskey (Secret AWS key)
+--gituser (Gitlab username) --gitpass (Gitlab password) --certdir (directory of updated ca-certificate) \
+--awsid (AWS ID) --awskey (Secret AWS key)
 ```
 
 
