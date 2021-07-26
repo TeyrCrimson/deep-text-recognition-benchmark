@@ -93,6 +93,15 @@ CUDA_VISIBLE_DEVICES=0 python3 test.py \
 --Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn \
 --saved_model saved_models/TPS-ResNet-BiLSTM-Attn-Seed1111/best_accuracy.pth
 ```
+### ClearML section
+
+(Untested) Use following code to initialize dataset (assuming you've already downloaded the lmdb dataset):
+```
+# From CLI
+clearml-data create --project  <Some random name> --name <Maybe put versioning here? E.g. ver1.0>
+clearml-data add --files <name of data folder>
+```
+Use the returned unique ID for the next step
 
 4. Command for ClearML
 ```
